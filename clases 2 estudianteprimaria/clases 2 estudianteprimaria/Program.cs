@@ -18,11 +18,7 @@ namespace clases_2_estudianteprimaria
             Console.WriteLine("Añadir notas del alumno por favor");
             alumnouno.notas = Convert.ToInt32(Console.ReadLine());
             
-                 
-
-            alumnouno.notaglobal = 20;
-
-            Console.WriteLine("Consulta ficha alumno" + Environment.NewLine + alumnouno.Obtenerficha() + alumnouno.Añadirnotas());
+            Console.WriteLine("Consulta ficha alumno" + Environment.NewLine + alumnouno.Obtenerficha() +Environment.NewLine + "Nota global: " + alumnouno.Anadirnotas());
             Console.ReadKey();
         }
     }
@@ -46,7 +42,7 @@ namespace clases_2_estudianteprimaria
         {
             get
             {
-                if (this.sexo = true) return "Mujer";
+                if (this.sexo == true) return "Mujer";
                 else return "Hombre";
 
             }
@@ -55,31 +51,30 @@ namespace clases_2_estudianteprimaria
         public double notaglobal { get; set; }
 
         //metodos
-        public double Añadirnotas()
+        public double Anadirnotas()
         {
             int contador = 0;
             double[] arreglo;
-            double sumadenotas = 0;
+            double sumadenotas = this.notas;
 
-            while (this.notas != -1)
+            while (contador != 9)
             {
-                arreglo = new double[contador];
+                arreglo = new double[10];
                 arreglo[contador] = this.notas;
-                Console.WriteLine("agregue una nueva nota o introdusca -1 para salir");
                 sumadenotas = sumadenotas + arreglo[contador];
                 contador++;
-
-                return sumadenotas;
+                Console.WriteLine("agregue una nueva nota o introdusca -1 para salir");
+                arreglo[contador] = Convert.ToInt32(Console.ReadLine());
+               
            }
+            return sumadenotas;
 
-          
         }
         public string Obtenerficha()
         {
             string ficha = "Nombre: " + this.nombre + " " + this.apellido + Environment.NewLine +
-"letra: " + this.letraelegible + Environment.NewLine + "Sexo: " + this.sexolegible + Environment.NewLine +
-"Nota global: " + this.notaglobal + Environment.NewLine + "Notas: " + this.notas;
-
+            "letra: " + this.letraelegible + Environment.NewLine + "Sexo: " + this.sexolegible 
+            + Environment.NewLine + "Notas: " + this.notas;
             return ficha;
     }
 
